@@ -1,0 +1,14 @@
+/* CSS precedence order from strongest to weakest: */
+/* 1. Styles marked with the !important keyword take priority over all else. */
+/* 2. Inline styles made using the style attribute take priority over all except for styles marked with !important keywords. */
+/* 3. Targeting an element through an ID attribute "#" takes next priority. */
+/* 4. Next in priority comes targeting an element through one of an elements class attributes ".". */
+/* 5. Then comes tag selectors */
+/* 6. Styles of the same precedence applied later take effect over styles applied earlier. */
+/* Remember only apply styles to an element and not a class if you won't those styles to apply to all the elements accross the whole site as all pages will be connected to the same stylesheets!*/
+
+/* Styles needed to alter the small foundational styles so that the website adapts to fit a medium sized screen for things like tablets and Ipads */
+@media(min-width: 600px) and (max-width: 1000px){
+    /* ---------------- Home Page Styles --------------- */
+
+}
