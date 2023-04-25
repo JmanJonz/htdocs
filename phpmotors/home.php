@@ -11,10 +11,10 @@
     <meta name="description" content="Add Description Here">
 
     <!-- Connecting this html page to stylesheets in cascading order -->
-    <link rel="stylesheet" href="css/a_my_default.css">
-    <link rel="stylesheet" href="css/b_small_foundation.css">
-    <link rel="stylesheet" href="css/c_medium.css">
-    <link rel="stylesheet" href="css/d_large.css">
+    <link rel="stylesheet" href="css/a_my_default.css" media="screen">
+    <link rel="stylesheet" href="css/b_small_foundation.css" media="screen">
+    <link rel="stylesheet" href="css/c_medium.css" media="screen">
+    <link rel="stylesheet" href="css/d_large.css" media="screen">
 
     <!-- Connecting JS code to this html page and defering it's execution until after the elements of the page are build -->
     <script defer src="scripts/home.js"></script>
