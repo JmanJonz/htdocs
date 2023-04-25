@@ -8,7 +8,34 @@
 /* Remember only apply styles to an element and not a class if you won't those styles to apply to all the elements accross the whole site as all pages will be connected to the same stylesheets!*/
 
 /* Styles needed to alter the small foundational styles so that the website adapts to fit a medium sized screen for things like tablets and Ipads */
-@media(min-width: 600px) and (max-width: 1000px){
+@media(min-width: 600px){
     /* ---------------- Home Page Styles --------------- */
+    /* Body */
+    body>img{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        z-index: -1;
+    }
+    body>div:nth-of-type(1){
+        display: block;
+        width: 85vw;
+        margin: 8px auto;
+        border: #4c96d7 3px solid;
+    }
 
+    /* nav */
+    nav>div{
+        width: 450px;
+    }
+    nav>div>a{
+        padding-block: 5px;
+    }
+
+    /* Footer */
+    footer p:nth-of-type(3){
+        display: block;
+    }
 }

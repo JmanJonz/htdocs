@@ -9,3 +9,64 @@
 
 /* Foundational small styles that set up all base styles for the whole website and designed first most for mobile devices. */
 /* ---------------- Home Page Styles --------------- */
+body{
+    font-family: sans-serif, Arial, Helvetica;
+    color: #3a3a3a;
+}
+body>img{
+    display: none;
+}
+body>div{
+    background-color: white;
+}
+/* Header */
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 7px;
+}
+header img{
+    width: 150px;
+}
+header a{
+    font-size: 18px;
+    padding: 13px;
+    color: #3a3a3a;
+}
+
+/* Nav */
+nav{
+    margin-top: 15px;
+    background-color: #3a3a3a;
+}
+nav div{
+    width: 360px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+nav div a{
+    color: white;
+    font-size: 17px;
+    padding-block: 17px;
+    padding-inline: 5px;
+    font-weight: lighter;
+}
+nav div a:hover{
+    background-color: #4c96d7;
+}
+
+/* Main */
+main{
+    font-size: 25px;
+    margin-block: 8px;
+}
+footer{
+    border-top: #3a3a3a solid 2px;
+    text-align: center;
+    padding: 4px;
+}
+footer p:nth-of-type(3){
+    display: none;
+}

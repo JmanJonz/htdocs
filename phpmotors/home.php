@@ -28,7 +28,7 @@
 
     </header>
     <main>
-        <h1>PHP Motors</h1>
+        <h1>PHP Motors Home Page</h1>
     </main>
     <footer>
 
