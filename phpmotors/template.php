@@ -27,26 +27,16 @@
     <img src="images/site/small_check.jpg" alt="Checkerboard Background">
     <div>
         <header>
-            <img src="images/site/logo.png" alt="Logo Image">
-            <a href="">My Account</a>
+            <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/header.php"; ?>
         </header>
         <nav>
-            <div>
-                <a href="">Home</a>
-                <a href="">Classic</a>
-                <a href="">Sports</a>
-                <a href="">SUV</a>
-                <a href="">Trucks</a>
-                <a href="">Used</a>
-            </div>
+            <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/nav.php"; ?>
         </nav>
         <main>
             <h1>PHP Motors Template</h1>
         </main>
         <footer>
-            <p>© PHP Motors, All rights reserved.</p>
-            <p>All images used are believed to be in "Fair Use". Please notify the author if any are not and they will be removed.</p>
-            <p>Last Updated: <span>25 April, 2018</span></p>
+            <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/footer.php"; ?>
         </footer>
     </div>
 </body>

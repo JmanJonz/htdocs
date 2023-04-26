@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- For SEO it is really important to add descriptive, relevant, and high search volume phrases and words for your page title and description! -->
-    <title>PHP Motors</title>
+    <title>PHP Motors General Template</title>
     <meta name="description" content="A fictional car dealership content management website for coding practice">
 
     <!-- Connecting this html page to stylesheets in cascading order -->
@@ -24,14 +24,30 @@
 
 <!-- For SEO it is really important to use proper html semantics and use descriptive, relevant, high seach volume key words to all elements starting with h1 heading and down. Even img alt tags and p text helps out but h1, h2, and down in order of importance for SEO -->
 <body>
-    <header>
-
-    </header>
-    <main>
-        <h1>PHP Motors Home Page</h1>
-    </main>
-    <footer>
-
-    </footer>
+    <img src="images/site/small_check.jpg" alt="Checkerboard Background">
+    <div>
+        <header>
+            <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/header.php"; ?>
+        </header>
+        <nav>
+            <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/nav.php"; ?>
+        </nav>
+        <main>
+            <h1>Welcome To PHP Motors!</h1>
+            <section class="own_today">
+                <div>
+                    <h2>DMC Delorean</h2>
+                    <p>3 Cup Holders</p>
+                    <p>Superman Doors</p>
+                    <p>Fuzzy Dice!</p>
+                    <p></p>
+                    <img src="images/delorean.jpg" alt="">
+                </div>
+            </section>
+        </main>
+        <footer>
+            <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/footer.php"; ?>
+        </footer>
+    </div>
 </body>
 </html>

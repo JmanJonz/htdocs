@@ -70,3 +70,7 @@ footer{
 footer p:nth-of-type(3){
     display: none;
 }
+.own_today{
+    color: #4c96d7;
+    font-size: 17px;
+}
