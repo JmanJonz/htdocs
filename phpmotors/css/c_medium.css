@@ -10,20 +10,30 @@
 /* Styles needed to alter the small foundational styles so that the website adapts to fit a medium sized screen for things like tablets and Ipads */
 @media(min-width: 600px){
     /* ---------------- Home Page Styles --------------- */
+    html{
+        margin: 0px;
+    }
     /* Body */
+    body{
+        position: relative;
+        width: 100vw;
+        overflow-x: hidden;
+    }
     body>img{
         display: block;
         position: absolute;
+        object-fit: cover;
         top: 0;
         left: 0;
-        width: 100vw;
-        min-height: 100vh;
+        width: 100%;
+        height: 103%;
         z-index: -1;
     }
     body>div:nth-of-type(1){
-        display: block;
+        position: relative;
+        top: 10px;
         width: 85vw;
-        margin: 8px auto;
+        margin-inline: auto;
         border: #4c96d7 3px solid;
     }
 
@@ -36,6 +46,10 @@
     }
 
     /* Main */
+    .own_today > img{
+        width: 80%;
+        margin-left: 100px;
+    }
     .own_today_smallview{
         display: none;
     }
@@ -51,6 +65,21 @@
     }
     .own_today div > p{
         font-size: 18px;
+    }
+    .review_upgrades_container{
+        margin: 25px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 35px;
+    }
+    .upgrades{
+        order: 1;
+    }
+    .reviews{
+        order: 2;
+    }
+    .reviews > h2{
+        margin-bottom: 12px;
     }
 
     /* Footer */
