@@ -40,8 +40,36 @@
                     <p>3 Cup Holders</p>
                     <p>Superman Doors</p>
                     <p>Fuzzy Dice!</p>
-                    <p></p>
-                    <img src="images/delorean.jpg" alt="">
+                    <a class="own_today_largeview" href="">Own Today</a>
+                </div>
+                <img src="images/delorean.jpg" alt="">
+                <a class="own_today_smallview" href="">Own Today</a>
+            </section>
+            <section class="reviews">
+                <h2>DMC Delorean Reviews</h2>
+                <li>"So fast its almost like traveling in time" (4/5)</li>
+                <li>"Coolest ride on the road" (4/5)</li>
+                <li>"I'm feeling Marty McFly!" (5/5)</li>
+                <li>"The most futuristic ride of our day" (5/5)</li>
+                <li>"80's livin and I love it" (5/5)</li>
+            </section>
+            <section class="upgrades">
+                <h2>Delorean Upgrades</h2>
+                <div>
+                    <img src="images/upgrades/flux-cap.png" alt="Flux"><a href=""></a></img>
+                    <a href="">Flux Capacitor</a>
+                </div>
+                <div>
+                    <img src="images/upgrades/flame.jpg" alt="Flame"><a href=""></a></img>
+                    <a href="">Flame Decals</a>
+                </div>
+                <div>
+                    <img src="images/upgrades/bumper_sticker.jpg" alt="Bumper Sticker"><a href=""></a></img>
+                    <a href="">Bumper Stickers</a>
+                </div>
+                <div>
+                    <img src="images/upgrades/hub-cap.jpg" alt="Hub Caps"><a href=""></a></img>
+                    <a href="">Hub Caps</a>
                 </div>
             </section>
         </main>
