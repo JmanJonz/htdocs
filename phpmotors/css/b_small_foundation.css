@@ -63,7 +63,7 @@ main{
     margin: 5px;
 }
 .own_today{
-    color: #4c96d7;
+    color: #113b5f;
     font-size: 12px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -87,7 +87,7 @@ main{
     padding: 14px;
     margin: 15px;
     background-color: #4c96d7;
-    color: #3a3a3a;
+    color: #050505;
     justify-self: center;
     
 }
