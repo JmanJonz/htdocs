@@ -1,5 +1,5 @@
 <div>
-    <a href="">Home</a>
+    <a href="home.php">Home</a>
     <a href="">Classic</a>
     <a href="">Sports</a>
     <a href="">SUV</a>
