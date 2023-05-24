@@ -30,12 +30,13 @@
             <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/header.php"; ?>
         </header>
         <nav>
-            <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/nav.php"; ?>
+            <!-- <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/nav.php"; ?> -->
+            <?php 
+            echo $navList; 
+            ?>
         </nav>
         <main>
-            <h1>Server Error</h1>
-            <br>
-            <p>We are very sorry it appears as our server is experiencing some technical difficulties. Please check back later.</p>
+            <h1>PHP Motors Template</h1>
         </main>
         <footer>
             <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/footer.php"; ?>

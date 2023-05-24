@@ -39,10 +39,10 @@
     }
 
     /* nav */
-    nav>div{
+    nav ul>li{
         width: 450px;
     }
-    nav>div>a{
+    nav ul>li>a{
         padding-block: 5px;
     }
 
