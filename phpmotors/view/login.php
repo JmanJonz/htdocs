@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- For SEO it is really important to add descriptive, relevant, and high search volume phrases and words for your page title and description! -->
-    <title>PHP Motors General Template</title>
+    <title>Sign Into PHP Motors</title>
     <meta name="description" content="A fictional car dealership content management website for coding practice">
 
     <!-- Connecting this html page to stylesheets in cascading order -->
@@ -38,8 +38,8 @@
         <main class="login">
             <h1>Sign In</h1>
             <form action="signin" method="post">
-                <label><input type="email" name="email" required></label>
-                <label><input type="password" name="password" required></label>
+                <label>Email<input type="email" name="email" required></label>
+                <label>Password<input type="password" name="password" required></label>
                 <button type="submit">Sign In</button>
             </form>
             <a href="/phpmotors/accounts/index.php?action=register">No Account? Sign Up Here</a>
