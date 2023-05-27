@@ -8,7 +8,7 @@ function regClient($clientFirstname, $clientLastname, $clientEmail, $clientPassw
     $db = phpmotorsConnect();
     // The SQL statement
     $sql = "INSERT INTO clients (clientFirstname, clientLastname, clientEmail, clientPassword)
-        Values (:clientFirstname, :clientLastname, :clientEmail, : clientPassowrd)";
+        Values (:clientFirstname, :clientLastname, :clientEmail, :clientPassword)";
     // create the prepared statement using the phpmotors connection object
     $stmt = $db->prepare($sql);
     // These next 4 lines add actual values into the prepared sql statement and tell the data base what datatype they are to help control data coming into the database

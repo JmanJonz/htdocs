@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- For SEO it is really important to add descriptive, relevant, and high search volume phrases and words for your page title and description! -->
-    <title>Sign Into PHP Motors</title>
+    <title>Add Classification</title>
     <meta name="description" content="A fictional car dealership content management website for coding practice">
 
     <!-- Connecting this html page to stylesheets in cascading order -->
@@ -35,21 +35,8 @@
             echo $navList; 
             ?>
         </nav>
-        <main class="login">
-            <h1>Sign In</h1>
-
-            <?php
-                if (isset($message)){
-                    echo $message;
-                }
-            ?>
-
-            <form action="signin" method="post">
-                <label>Email<input type="email" name="email" required></label>
-                <label>Password<input type="password" name="password" required></label>
-                <button type="submit">Sign In</button>
-            </form>
-            <a href="/phpmotors/accounts/index.php?action=registration">No Account? Sign Up Here</a>
+        <main>
+            <h1>PHP Motors Template</h1>
         </main>
         <footer>
             <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/footer.php"; ?>

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- For SEO it is really important to add descriptive, relevant, and high search volume phrases and words for your page title and description! -->
-    <title>PHP Motors General Template</title>
+    <title>PHP Motors Home</title>
     <meta name="description" content="A fictional car dealership content management website for coding practice">
 
     <!-- Connecting this html page to stylesheets in cascading order -->
