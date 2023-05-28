@@ -37,10 +37,9 @@
         </nav>
         <main>
             <h1>Vehicle Management</h1>
-            <h2>Add Classification</h2>
-            <a href=""></a>
-            <h2></h2>
-            <a href=""></a>
+            <a href="/phpmotors/vehicles/index.php?action=addClassification">Add Classification</a>
+            <br>
+            <a href="/phpmotors/vehicles/index.php?action=addVehicle">Add Vehicle</a>
         </main>
         <footer>
             <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/footer.php"; ?>

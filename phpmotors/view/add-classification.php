@@ -36,7 +36,7 @@
             ?>
         </nav>
         <main>
-            <h1>PHP Motors Template</h1>
+            <h1>Add Classification</h1>
         </main>
         <footer>
             <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/footer.php"; ?>

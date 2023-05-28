@@ -7,10 +7,10 @@ require_once "../model/main-model.php";
 require_once "../model/vehicles-model.php";
 
 // Create $navList variable to build the dynamic menu
+// Build a navigation bar using the $classifications array
 // Get the array of classifications
 $classifications = getClassifications();
 
-// Build a navigation bar using the $classifications array
 $navList = "<ul>";
 $navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors Home Page'>Home</a></li>";
 foreach ($classifications as $classification){
@@ -18,8 +18,8 @@ foreach ($classifications as $classification){
 }
 $navList .= "</ul>";
 
-// building a dynamic class list to build a dropdown select list
-$classificationList
+// Get the array of classification names and id's
+$classificationNAndIs = getClassificationNameAndId();
 
 // load view based on url parameters
 $action = filter_input(INPUT_POST, "action");
@@ -28,7 +28,11 @@ if($action == null){
 }
 
 switch($action){
-    case "dfd":
+    case "addClassification":
+        include "../view/add-classification.php";
+        break;
+    case "addVehicle":
+        include "../view/add-vehicle.php";
         break;
     default:
     include "../view/vehicle-management.php";
