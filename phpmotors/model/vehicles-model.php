@@ -6,7 +6,7 @@ function getClassificationNameAndId(){
     // create a connection object to connect to the database with
     $db = phpmotorsConnect();
     // The SQL statement to be used with the database
-    $sql = "SELECT classificationId, classificationName FROM carclassification";
+    $sql = "SELECT classificationId, classificationName FROM carclassification ORDER BY classificationName ASC";
     // The next line creates the prepared statement using the phpmotors connection object
     $stmt = $db->prepare($sql);
     // Uses the PDO execute method to execute the prepared sql code string

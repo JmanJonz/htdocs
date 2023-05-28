@@ -37,6 +37,9 @@
         </nav>
         <main>
             <h1>Add Vehicle</h1>
+            <?php
+                echo $selectList;
+            ?>
         </main>
         <footer>
             <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/footer.php"; ?>

@@ -20,6 +20,15 @@ $navList .= "</ul>";
 
 // Get the array of classification names and id's
 $classificationNAndIs = getClassificationNameAndId();
+// build dropdown select list of car classifications to be used in the add vehicle view to choose classification
+$selectList = '<select name="dropdown">';
+$selectList .= '<option value="">Choose Car Classification</option>'; // Default or placeholder option
+
+
+foreach($classificationNAndIs as $classif){
+    $selectList .= '<option value="'.$classif["classificationId"].'">'.$classif["classificationName"].'</option>';
+}
+$selectList .= '</select>';
 
 // load view based on url parameters
 $action = filter_input(INPUT_POST, "action");
