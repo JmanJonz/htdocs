@@ -36,10 +36,28 @@
             ?>
         </nav>
         <main>
-            <h1>Add Vehicle</h1>
+            <h1 class="addvh1">Add Vehicle</h1>
             <?php
-                echo $selectList;
+                if (isset($message)){
+                    echo $message;
+                }
             ?>
+            <p>*Note all fields are required</p>
+            <form class="addvform" action="/phpmotors/vehicles/index.php" method="post">
+                <?php
+                    echo $selectList;
+                ?>
+                <label>Make<br><input type="text" name="invMake"></label>
+                <label>Model<br><input type="text" name="invModel"></label>
+                <label>Description<br><input type="text" name="invDescription"></label>
+                <label>Image<br><input type="text" name="invImage" value="/phpmotors/images/no-image.png"></label>
+                <label>Thumbnail<br><input type="text" name="invThumbnail" value="/phpmotors/images/no-image.png"></label>
+                <label>Price<br><input type="text" name="invPrice"></label>
+                <label>Stock<br><input type="text" name="invStock"></label>
+                <label>Color<br><input type="text" name="invColor"></label>
+                <button type="submit">Add Inventory</button>
+                <input type="hidden" name="action" value="addInventory">
+            </form>
         </main>
         <footer>
             <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/footer.php"; ?>

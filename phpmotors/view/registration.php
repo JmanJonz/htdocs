@@ -43,11 +43,12 @@
             }
             ?>
             <form action="/phpmotors/accounts/index.php" method="post">
-                <label>First Name<input type="text" name="clientFirstname" ></label>
-                <label>Last Name<input type="text" name="clientLastname" ></label>
-                <label>Email<input type="email" name="clientEmail" ></label>
-                <label>Password<input type="password" name="clientPassword" ></label>
-                <p>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter, and 1 special character.</p>
+                <label>First Name<input type="text" name="clientFirstname" required <?php if(isset($clientFirstname)){echo "value='$clientFirstname'";}  ?>></label>
+                <label>Last Name<input type="text" name="clientLastname" required <?php if(isset($clientLastname)){echo "value='$clientLastname'";} ?>></label>
+                <label>Email<input type="email" name="clientEmail" required <?php if(isset($clientEmail)){echo "value='$clientEmail'";} ?>></label>
+                <label>Password <br>
+                    <span class="newPassword">Must be at least 8 characters and contain at least 1 number, 1 capital letter, and 1 special character.</span>
+                    <input type="password" name="clientPassword" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></label>
                 <button type="submit">Join PHP Motors</button>
                 <input type="hidden" name="action" value="register">
             </form>

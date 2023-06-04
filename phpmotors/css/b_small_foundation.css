@@ -43,7 +43,7 @@ nav{
 nav ul{
     height: 35px;
     padding-top: 8px;
-    width: 345px;
+    width: 400px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -197,4 +197,49 @@ main.register>a{
 }
 main.register form button{
     height: 35px;
+}
+.newPassword{
+    font-size: 12px !important;
+    width: 100%;
+    display: inline !important;
+}
+
+/* Vehicle Management View */
+.VMViewh1{
+    margin-bottom: 8px;
+}
+.VMViewh1>a{
+    font-size: 18px;
+}
+
+/* Add classif view */
+.addcclass>*{
+    margin-block: 8px;
+}
+.addcclass>label>*{
+    min-height: 35px;
+}
+.addcclass>label{
+    font-size: 18px;
+}
+.addcclass>button{
+    min-height: 30px;
+}
+
+/* Add vehicle view */
+.addvform>*{
+    display: block;
+    margin-block: 8px;
+}
+.addvform>label>*{
+    min-height: 35px;
+}
+.addvform>label, p{
+    font-size: 18px;
+}
+.addvform>button, .addvform>select{
+    min-height: 30px;
+}
+.addvh1{
+    margin-bottom: 10px;
 }

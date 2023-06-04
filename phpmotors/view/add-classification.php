@@ -37,6 +37,17 @@
         </nav>
         <main>
             <h1>Add Classification</h1>
+            <?php
+                if (isset($message)){
+                    echo $message;
+                }
+            ?>
+            <form class="addcclass" action="/phpmotors/vehicles/index.php?" method="post">
+                <label>Classification Name<br><input type="text" name="classificationName"></label>
+                <br>
+                <button type="submit">Add Classification</button>
+                <input type="hidden" name="action" value="addClass">
+            </form>
         </main>
         <footer>
             <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/footer.php"; ?>

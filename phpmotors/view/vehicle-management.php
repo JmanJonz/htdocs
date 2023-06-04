@@ -36,7 +36,7 @@
             ?>
         </nav>
         <main>
-            <h1>Vehicle Management</h1>
+            <h1 class="VMViewh1">Vehicle Management</h1>
             <a href="/phpmotors/vehicles/index.php?action=addClassification">Add Classification</a>
             <br>
             <a href="/phpmotors/vehicles/index.php?action=addVehicle">Add Vehicle</a>

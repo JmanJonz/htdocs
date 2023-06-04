@@ -44,9 +44,12 @@
                 }
             ?>
 
-            <form action="signin" method="post">
-                <label>Email<input type="email" name="email" required></label>
-                <label>Password<input type="password" name="password" required></label>
+            <form action="../accounts/index.php" method="post">
+                <label>Email<input type="email" name="email" required <?php if(isset($clientEmail)){echo "value='$clientEmail'";} ?>></label>
+                <label>Password <br>
+                    <span class="newPassword">Must be at least 8 characters and contain at least 1 number, 1 capital letter, and 1 special character.</span>
+                    <input type="password" name="password" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></label>
+                    <input type="hidden" name="action" value="signIn">
                 <button type="submit">Sign In</button>
             </form>
             <a href="/phpmotors/accounts/index.php?action=registration">No Account? Sign Up Here</a>
