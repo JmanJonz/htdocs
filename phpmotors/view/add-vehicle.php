@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+<?php
+// Get the array of classification names and id's
+$classificationNAndIs = getClassificationNameAndId();
+// build dropdown select list of car classifications to be used in the add vehicle view to choose classification
+$selectList = '<select name="classificationId">';
+foreach($classificationNAndIs as $classif){
+    $selectList .= "<option  value=$classif[classificationId].";
+    if(isset($classificationId)){
+        if($classif["classificationId"] == $classificationId){
+            $selectList .= " selected ";
+        }
+    }
+    $selectList .= ">$classif[classificationName]</option>";
+}
+$selectList .= '</select>';
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Setting up device viewport and pixel scale etc -->
@@ -47,14 +62,14 @@
                 <?php
                     echo $selectList;
                 ?>
-                <label>Make<br><input type="text" name="invMake"></label>
-                <label>Model<br><input type="text" name="invModel"></label>
-                <label>Description<br><input type="text" name="invDescription"></label>
-                <label>Image<br><input type="text" name="invImage" value="/phpmotors/images/no-image.png"></label>
-                <label>Thumbnail<br><input type="text" name="invThumbnail" value="/phpmotors/images/no-image.png"></label>
-                <label>Price<br><input type="text" name="invPrice"></label>
-                <label>Stock<br><input type="text" name="invStock"></label>
-                <label>Color<br><input type="text" name="invColor"></label>
+                <label>Make<br><input type="text" name="invMake" required <?php if(isset($invMake)){echo "value='$invMake'";}?>></label>
+                <label>Model<br><input type="text" name="invModel" required <?php if(isset($invModel)){echo "value='$invModel'";}?>></label>
+                <label>Description<br><textarea name="invDescription" rows="4" cols="45" required ><?php if(isset($invDescription)){echo "$invDescription";}?></textarea></label>
+                <label>Image<br><input type="text" name="invImage" value="/phpmotors/images/no-image.png" required <?php if(isset($invImage)){echo "value='$invImage'";} ?>></label>
+                <label>Thumbnail<br><input type="text" name="invThumbnail" value="/phpmotors/images/no-image.png" required <?php if(isset($invThumbnail)){echo "value='$invThumbnail'";}  ?>></label>
+                <label>Price<br><input type="number" name="invPrice" required <?php if(isset($invPrice)){echo "value='$invPrice'";}  ?>></label>
+                <label>Stock<br><input type="number" name="invStock" required <?php if(isset($invStock)){echo "value='$invStock'";}  ?>></label>
+                <label>Color<br><input type="text" name="invColor" required <?php if(isset($invColor)){echo "value='$invColor'";}  ?>></label>
                 <button type="submit">Add Inventory</button>
                 <input type="hidden" name="action" value="addInventory">
             </form>

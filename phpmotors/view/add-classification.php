@@ -43,7 +43,7 @@
                 }
             ?>
             <form class="addcclass" action="/phpmotors/vehicles/index.php?" method="post">
-                <label>Classification Name<br><input type="text" name="classificationName"></label>
+                <label>Classification Name<br><span class="inputInstructions">No more than 30 characters.</span><br><input type="text" name="classificationName" required pattern=".{1,30}"></label>
                 <br>
                 <button type="submit">Add Classification</button>
                 <input type="hidden" name="action" value="addClass">

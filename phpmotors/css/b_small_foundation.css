@@ -225,6 +225,9 @@ main.register form button{
 .addcclass>button{
     min-height: 30px;
 }
+.inputInstructions{
+    font-size: 12px !important;
+}
 
 /* Add vehicle view */
 .addvform>*{
