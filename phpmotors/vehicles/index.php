@@ -12,9 +12,9 @@ getClassifications();
 $navList = loadNav(getClassifications());
 
 // load view based on url parameters
-$action = filter_input(INPUT_POST, "action");
+$action = filter_input(INPUT_POST, "action", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if($action == null){
-    $action = filter_input(INPUT_GET, "action");
+    $action = filter_input(INPUT_GET, "action", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 }
 
 switch($action){

@@ -16,9 +16,9 @@ $classifications = getClassifications();
 $navList = loadNav(getClassifications());
 
 // Handle the user's request
-$action = filter_input(INPUT_POST, "action");
+$action = filter_input(INPUT_POST, "action", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if ($action == NULL){
-    $action = filter_input(INPUT_GET, "action");
+    $action = filter_input(INPUT_GET, "action", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 }
 
 switch ($action){
