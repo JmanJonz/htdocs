@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+if(!$_SESSION["loggedin"]){
+header("Location: /phpmotors/index.php");
+}
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Setting up device viewport and pixel scale etc -->
@@ -7,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- For SEO it is really important to add descriptive, relevant, and high search volume phrases and words for your page title and description! -->
-    <title>Sign Into PHP Motors</title>
+    <title>Admin View</title>
     <meta name="description" content="A fictional car dealership content management website for coding practice">
 
     <!-- Connecting this html page to stylesheets in cascading order -->
@@ -18,7 +22,7 @@
 
     <!-- Connecting JS code to this html page and defering it's execution until after the elements of the page are build -->
     <!-- <script defer src="scripts/home.js"></script> -->
- 
+
     <!-- Other Links -->
 </head>
 
@@ -35,24 +39,21 @@
             echo $navList; 
             ?>
         </nav>
-        <main class="login">
-            <h1>Sign In</h1>
-
-            <?php
-                if (isset($_SESSION["message"])){
-                    echo $_SESSION["message"];
+        <main>
+            <h1><?php echo $_SESSION["clientData"]["clientFirstname"] . " " . $_SESSION["clientData"]["clientLastname"] . " (You Are Logged In)"; ?></h1>
+            <br>
+            <ul>
+                <li>First Name: <?php echo $_SESSION["clientData"]["clientFirstname"] ?></li>
+                <li>Last Name: <?php echo $_SESSION["clientData"]["clientLastname"] ?></li>
+                <li>Email: <?php echo $_SESSION["clientData"]["clientEmail"] ?></li>
+            </ul>
+            <?php 
+                if($_SESSION["clientData"]["clientLevel"] > 1){
+                    echo "<br><p><a href='/phpmotors/vehicles/'>Vehicles Management</a></p>";
                 }
-            ?>
-
-            <form action="../accounts/index.php?action=signIn" method="post">
-                <label>Email<input type="email" name="email" required <?php if(isset($clientEmail)){echo "value='$clientEmail'";} ?>></label>
-                <label>Password <br>
-                    <span class="newPassword">Must be at least 8 characters and contain at least 1 number, 1 capital letter, and 1 special character.</span>
-                    <input type="password" name="password" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></label>
-                    <input type="hidden" name="action" value="signIn">
-                <button type="submit">Sign In</button>
-            </form>
-            <a href="/phpmotors/accounts/index.php?action=registration">No Account? Sign Up Here</a>
+                // if($_SESSION["clientData"]["clientLevel"] == 1){
+                // }
+             ?>
         </main>
         <footer>
             <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/footer.php"; ?>

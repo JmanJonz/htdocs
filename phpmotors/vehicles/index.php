@@ -1,6 +1,9 @@
 <?php
 // this is the vehicle's controller
 
+// Create or access a session
+session_start();
+
 // Pulling in other files to be used
 require_once "../library/connections.php";
 require_once "../model/main-model.php";

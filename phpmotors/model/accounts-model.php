@@ -25,4 +25,34 @@ function regClient($clientFirstname, $clientLastname, $clientEmail, $clientPassw
     // Return the indication of success (rows changed)
     return $rowsChanged;
 }
+
+// This function will check if entered client email already exists
+function checkIfEmailExists($email){
+    // Create a DB connection object using the function that we made to create it with the right info for php motors
+    $PDO = phpmotorsConnect();
+    // create a sql prepared statement and store it in a variable to prevent db injection attacks
+    $sql = "SELECT clientEmail FROM clients WHERE clientEmail = :email";
+    $stmt = $PDO->prepare($sql);
+    $stmt->bindValue(":email", $email);
+    $stmt->execute();
+    $existingEmail = $stmt->fetch(PDO::FETCH_NUM);
+    $stmt->closeCursor();
+    if(empty($existingEmail)){
+        return 0;
+    } else{
+        return 1;
+    }
+}
+
+// Get client data based on an email address
+function getClient($clientEmail){
+    $PDO = phpmotorsConnect();
+    $sql = "SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword FROM clients WHERE clientEmail = :clientEmail";
+    $stmt = $PDO->prepare($sql);
+    $stmt->bindValue(":clientEmail", $clientEmail);
+    $stmt->execute();
+    $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $clientData;
+}
 ?>

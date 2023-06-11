@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<?php
+// Extra credit make sure that user has lever to access this.
+if($_SESSION["loggedin"] && $_SESSION["clientData"]["clientLevel"] > 1){
+    // Proceeed
+}else{
+    header("Location: /phpmotors/index.php");
+}
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Setting up device viewport and pixel scale etc -->

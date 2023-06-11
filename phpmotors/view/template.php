@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../css/d_large.css" media="screen">
 
     <!-- Connecting JS code to this html page and defering it's execution until after the elements of the page are build -->
-    <script defer src="scripts/home.js"></script>
+    <!-- <script defer src="scripts/home.js"></script> -->
 
     <!-- Other Links -->
 </head>

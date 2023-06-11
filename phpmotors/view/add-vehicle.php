@@ -1,4 +1,11 @@
 <?php
+// Extra credit make sure that user has lever to access this.
+if($_SESSION["loggedin"] && $_SESSION["clientData"]["clientLevel"] > 1){
+    // Proceeed
+}else{
+    header("Location: /phpmotors/index.php");
+}
+?><?php
 // Get the array of classification names and id's
 $classificationNAndIs = getClassificationNameAndId();
 // build dropdown select list of car classifications to be used in the add vehicle view to choose classification
