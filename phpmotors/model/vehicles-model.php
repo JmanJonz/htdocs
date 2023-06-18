@@ -54,7 +54,18 @@ function addInventory($invMake, $invModel, $invDescription, $invImage, $invThumb
     $stmt->execute();
     $rowsChanged = $stmt->rowCount();
     $stmt->closeCursor();
-    return $rowsChanged;
+    return $rowsChanged; 
+}
 
+// Get vehicles by classificationId
+function getInventoryByClassification($classificationId){
+    $PDO = phpmotorsConnect();
+    $sql = "SELECT * FROM inventory WHERE classificationId = :classificationId";
+    $prepStateObj = $PDO->prepare($sql);
+    $prepStateObj->bindValue(":classificationId", $classificationId, PDO::PARAM_INT);
+    $prepStateObj->execute();
+    $inventory = $prepStateObj->fetchAll(PDO::FETCH_ASSOC);
+    $prepStateObj->closeCursor();
+    return $inventory;
 }
 ?>
