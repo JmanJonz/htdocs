@@ -1,4 +1,7 @@
 <?php
+// Functions To Be Used
+// require_once "../model/vehicles-model.php";
+
 // Used to check if email is valid on backend
 function checkEmail($clientEmail){
     $valEmail = filter_var($clientEmail, FILTER_VALIDATE_EMAIL);
@@ -25,7 +28,18 @@ function loadNav($classifList){
         $navList .= "<li><a href='/phpmotors/index.php?action=".urlencode($classification['classificationName'])."' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
     }
     $navList .= "</ul>";
-        return $navList;
+        return $navList; 
+}
+
+// build the classification select list for crud operations
+function buildClassificationList($classNamzanddIdz){
+    $classificationList = "<select name='classificationId' id='classificationList'>";
+    $classificationList .= "<option>Choose a Classification</option>";
+    foreach($classNamzanddIdz as $classification){
+        $classificationList .= "<option value='$classification[classificationId]'>$classification[classificationName]</option>"; 
+    }
+    $classificationList .= "</select>";
+    return $classificationList;
 }
 
 ?>

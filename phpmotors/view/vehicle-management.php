@@ -5,6 +5,10 @@ if($_SESSION["loggedin"] && $_SESSION["clientData"]["clientLevel"] > 1){
 }else{
     header("Location: /phpmotors/index.php");
 }
+
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+   }
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +28,8 @@ if($_SESSION["loggedin"] && $_SESSION["clientData"]["clientLevel"] > 1){
     <link rel="stylesheet" href="../css/d_large.css" media="screen">
 
     <!-- Connecting JS code to this html page and defering it's execution until after the elements of the page are build -->
-    <script defer src="scripts/home.js"></script>
+    <script defer src="../scripts/home.js"></script>
+    <script defer src="../scripts/inventory.js"></script>
 
     <!-- Other Links -->
 </head>
@@ -47,10 +52,30 @@ if($_SESSION["loggedin"] && $_SESSION["clientData"]["clientLevel"] > 1){
             <a href="/phpmotors/vehicles/index.php?action=addClassification">Add Classification</a>
             <br>
             <a href="/phpmotors/vehicles/index.php?action=addVehicle">Add Vehicle</a>
+
+            <!-- inventory select to modify -->
+            <?php 
+            if (isset($message)){
+                echo $message; 
+            } 
+            if (isset($builtClassificationList)){
+                echo "<h2>Vehicles By Classification</h2>";
+                echo "<p>Choose a classification to see those vehicles</p>";
+                echo $builtClassificationList;
+            }
+            ?>
+
+            <!-- Let user know that js is needed if js is disabled on their browser -->
+            <noscript>
+            <p><strong>JavaScript Must Be Enabled to Use this Page.</strong></p>
+            </noscript>
+
+            <!-- Container element to inject inventory elements into with js -->
+            <table id="inventoryDisplay"></table>
         </main>
         <footer>
             <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/footer.php"; ?>
         </footer>
     </div>
 </body>
-</html>
+</html><?php unset($_SESSION['message']); ?>
