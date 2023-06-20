@@ -117,8 +117,19 @@ switch ($action){
             exit;
         }
         break;
+    case "updateAccountInfo":
+        include "../view/client-update.php";
+        exit;
+        break;
+    case "processAccountUpdate":
+
+        break;
+    case "processPasswordChange":
+        
+        break;
     default:
         include "../view/admin.php";
+        exit;
     break;
 }
 ?>

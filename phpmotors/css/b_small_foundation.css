@@ -204,6 +204,8 @@ main.register form button{
     display: inline !important;
 }
 
+/* Logged In / Admin view */
+
 /* Vehicle Management View */
 .VMViewh1{
     margin-bottom: 8px;
@@ -245,4 +247,7 @@ main.register form button{
 }
 .addvh1{
     margin-bottom: 10px;
+}
+.vehiclesByClassification{
+    margin-top: 10px;
 }

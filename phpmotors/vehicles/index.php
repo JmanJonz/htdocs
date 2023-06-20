@@ -154,8 +154,8 @@ switch($action){
         $invId = filter_input(INPUT_POST, 'invId', FILTER_SANITIZE_NUMBER_INT);
 
         // finally update database
-        $deleteResultResult = deleteVehicle($invId);
-        if($deleteResult === 1){
+        $deleteResult = deleteVehicle($invId);
+        if($deleteResult > 0){
             $message = "<p class='notify'>Congratulations, the $invMake $invModel was successfully deleted.</p>";
             $_SESSION['message'] = $message;
             header('location: /phpmotors/vehicles/');

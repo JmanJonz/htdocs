@@ -110,7 +110,7 @@ function updateVehicle($invMake, $invModel, $invDescription, $invImage, $invThum
 }
 
 // delete selected vehicle
-deleteVehicle($invId){
+function deleteVehicle($invId){
     $db = phpmotorsConnect();
     $sql = "DELETE FROM inventory WHERE invId = :invId";
     $stmt = $db->prepare($sql);

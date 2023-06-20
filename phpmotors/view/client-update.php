@@ -1,14 +1,9 @@
 <?php
-// Extra credit make sure that user has lever to access this.
-if($_SESSION["loggedin"] && $_SESSION["clientData"]["clientLevel"] > 1){
+if($_SESSION["loggedin"]){
     // Proceeed
 }else{
     header("Location: /phpmotors/index.php");
 }
-
-if (isset($_SESSION['message'])) {
-    $message = $_SESSION['message'];
-   }
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +13,7 @@ if (isset($_SESSION['message'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- For SEO it is really important to add descriptive, relevant, and high search volume phrases and words for your page title and description! -->
-    <title>Vehicle Management</title>
+    <title>Account Management</title>
     <meta name="description" content="A fictional car dealership content management website for coding practice">
 
     <!-- Connecting this html page to stylesheets in cascading order -->
@@ -28,8 +23,7 @@ if (isset($_SESSION['message'])) {
     <link rel="stylesheet" href="../css/d_large.css" media="screen">
 
     <!-- Connecting JS code to this html page and defering it's execution until after the elements of the page are build -->
-    <script defer src="../scripts/home.js"></script>
-    <script defer src="../scripts/inventory.js"></script>
+    <!-- <script defer src="scripts/home.js"></script> -->
 
     <!-- Other Links -->
 </head>
@@ -48,34 +42,33 @@ if (isset($_SESSION['message'])) {
             ?>
         </nav>
         <main>
-            <h1 class="VMViewh1">Vehicle Management</h1>
-            <a href="/phpmotors/vehicles/index.php?action=addClassification">Add Classification</a>
-            <br>
-            <a href="/phpmotors/vehicles/index.php?action=addVehicle">Add Vehicle</a>
-
-            <!-- inventory select to modify -->
-            <?php 
-            if (isset($message)){
-                echo $message; 
-            } 
-            if (isset($builtClassificationList)){
-                echo "<h2 class='vehiclesByClassification'>Vehicles By Classification</h2>";
-                echo "<p>Choose a classification to see those vehicles</p>";
-                echo $builtClassificationList;
-            }
-            ?>
-
-            <!-- Let user know that js is needed if js is disabled on their browser -->
-            <noscript>
-            <p><strong>JavaScript Must Be Enabled to Use this Page.</strong></p>
-            </noscript>
-
-            <!-- Container element to inject inventory elements into with js -->
-            <table id="inventoryDisplay"></table>
+            <?php if(isset($message)){
+                echo $message;
+            } ?>
+            <form action="" method="post">
+                <h2>Account Update</h2>
+                <label>First Name<input type="text" name="clientFirstname" required <?php echo "value='" . $_SESSION["clientData"]["clientFirstname"] . "'"?>></label><br>
+                <label>Last Name<input type="text" name="clientLastname" required <?php echo "value='" . $_SESSION["clientData"]["clientLastname"] . "'"?>></label><br>
+                <label>Email<input type="email" name="clientEmail" required <?php echo "value='" . $_SESSION["clientData"]["clientEmail"] . "'"?>></label><br>
+                <input type="hidden" name="clientId" value="<?php $_SESSION["clientData"]["clientId"]?>">
+                <input type="hidden" name="action" value="processAccountUpdate">
+                <input type="submit" value="Update Account Info">
+            </form>
+            <?php if(isset($message)){
+                echo $message;
+            } ?>
+            <form action="" method="post">
+                <h2>Change Password</h2>
+                <span class="newPassword">8 characters long, 1+ numbers, 1+ capital letter, and 1+ special character.</span><br>
+                <label>Password<input type="password" name="clientPassword" title="Entering A Password Will Change Your Current Password" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></label><br>
+                <input type="hidden" name="clientId" value="<?php $_SESSION["clientData"]["clientId"]?>">
+                <input type="hidden" name="action" value="processPasswordChange">
+                <input type="submit" value="Change Password">
+            </form>
         </main>
         <footer>
             <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/footer.php"; ?>
         </footer>
     </div>
 </body>
-</html><?php unset($_SESSION['message']); ?>
+</html>
