@@ -161,7 +161,38 @@ switch ($action){
         }
         break;
     case "processPasswordChange":
+        // Grabbing clientId and password submitted by form
+        $clientId = trim(filter_input(INPUT_POST, "clientId", FILTER_SANITIZE_NUMBER_INT));
+        $clientPassword = trim(filter_input(INPUT_POST, "clientPassword", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        // make sure required fields arent empty
+        if(empty($clientPassword)){
+            $message2 = "<p>Please provide information for all empty form fields.</p>";
+            include "../view/client-update.php";
+            exit;
+        }
 
+        // backend validation of password requirements
+        $checkPassword = checkPassword($clientPassword);
+        // Now if the password has passed all tests we will hash and update the password
+        if($checkPassword){
+            // Hash the checked password
+            $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+            // update password hash in DB and give the user a confirmation
+            $updateSuccessful = processPasswordUpdate($clientId, $hashedPassword, $clientPassword);
+            if($updateSuccessful){
+                $_SESSION["message"] = "Congradulations Your Password Has Been Updated!";
+                header("Location: ./");
+                exit;
+            }else{
+                $_SESSION["message"] = "An error occured, your password was not updated";
+                header("Location: ./");
+                exit;
+            }
+        }else{
+            $message2 = "<p>Error, Please make sure that the password meets the requirements.</p>";
+            include "../view/client-update.php";
+            exit;
+        }
         break;
     default:
         include "../view/admin.php";

@@ -1,4 +1,5 @@
 <?php
+
 // This is the accounts model
 
 
@@ -89,5 +90,27 @@ function processAccountUpdate($clientId, $clientFirstname, $clientLastname, $cli
     $stmt->closeCursor();
     // Return the indication of success (rows changed)
     return $rowsChanged;
+}
+
+// Update Password with a new hash and return true if successful
+function processPasswordUpdate($clientId, $clientPasswordHashed, $clientPassword){
+    // create PHP DB connection object
+    $PDO = phpmotorsConnect();
+    // Create the sql statement to be used in the prepared statement object
+    $sql = "UPDATE clients SET clientPassword = :clientPassword WHERE clientId = :clientId";
+    // Create database prepared statement object
+    $prepStateObj = $PDO->prepare($sql);
+    $prepStateObj->bindValue(":clientPassword", $clientPasswordHashed, PDO::PARAM_STR);
+    $prepStateObj->bindValue(":clientId", $clientId, PDO::PARAM_INT);
+    // execute the update
+    $prepStateObj->execute();
+    $rowsChanged = $prepStateObj->rowCount();
+    $prepStateObj->closeCursor();
+    if($rowsChanged && $clientPasswordHashed != $clientPassword){
+        return 1;
+    }else{
+        return 0;
+    }
+
 }
 ?>

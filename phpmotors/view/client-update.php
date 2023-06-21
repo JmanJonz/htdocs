@@ -61,7 +61,7 @@ if($_SESSION["loggedin"]){
                 <h2>Change Password</h2>
                 <span class="newPassword">8 characters long, 1+ numbers, 1+ capital letter, and 1+ special character.</span><br>
                 <label>Password<input type="password" name="clientPassword" title="Entering A Password Will Change Your Current Password" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></label><br>
-                <input type="hidden" name="clientId" value="<?php $_SESSION["clientData"]["clientId"]?>">
+                <input type="hidden" name="clientId" value="<?php echo $_SESSION["clientData"]["clientId"]?>">
                 <input type="hidden" name="action" value="processPasswordChange">
                 <input type="submit" value="Change Password">
             </form>
