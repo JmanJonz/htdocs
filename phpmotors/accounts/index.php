@@ -122,10 +122,46 @@ switch ($action){
         exit;
         break;
     case "processAccountUpdate":
+        // Getting data submitted by account update sent here by post
+        $clientId = trim(filter_input(INPUT_POST, "clientId", FILTER_SANITIZE_NUMBER_INT));
+        $clientFirstname = trim(filter_input(INPUT_POST, "clientFirstname", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        $clientLastname = trim(filter_input(INPUT_POST, "clientLastname", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        $clientEmail = trim(filter_input(INPUT_POST, "clientEmail", FILTER_SANITIZE_EMAIL));
+        // making sure that no required input is left empty
+        if(empty($clientFirstname) || empty($clientLastname) || empty($clientEmail)){
+            $message1 = "<p>Please provide information for all empty form fields.</p>";
+            include "../view/client-update.php";
+            exit;
+        }
 
+        // check if email is different from the one in the session if yes also check that the email does not already exist in the DB
+        if($clientEmail != $_SESSION["clientData"]["clientEmail"]){
+            $emailAlreadyExists = checkIfEmailExists($clientEmail);
+            if($emailAlreadyExists){
+                $message1 = "<p class='notice'>That email already exists. Enter a different one.</p>";
+                include "../view/client-update.php";
+                exit;
+            }
+        }
+        // Call model function to update the client data for the client's id number then deliver view based on results
+        $updateSuccessful = processAccountUpdate($clientId, $clientFirstname, $clientLastname, $clientEmail);
+        if($updateSuccessful > 0){
+            $_SESSION["welcomeMessage"] = "Welcome " . $clientFirstname;
+            $_SESSION["message"] = "Congrats Your Account Update Was Successful!";
+            $clientData = getClientById($clientId);
+            $_SESSION["clientData"]["clientFirstname"] = $clientData["clientFirstname"];
+            $_SESSION["clientData"]["clientLastname"] = $clientData["clientLastname"];
+            $_SESSION["clientData"]["clientEmail"] = $clientData["clientEmail"];
+            include "../view/admin.php";
+            exit;
+        }else{
+            $_SESSION["message"] = "Sorry Account Update Was Either Not Successful Or Nothing Was Changed";
+            include "../view/admin.php";
+            exit;
+        }
         break;
     case "processPasswordChange":
-        
+
         break;
     default:
         include "../view/admin.php";

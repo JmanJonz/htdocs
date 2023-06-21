@@ -42,22 +42,22 @@ if($_SESSION["loggedin"]){
             ?>
         </nav>
         <main>
-            <?php if(isset($message)){
-                echo $message;
+            <?php if(isset($message1)){
+                echo $message1;
             } ?>
-            <form action="" method="post">
+            <form action="../accounts/index.php" method="post">
                 <h2>Account Update</h2>
-                <label>First Name<input type="text" name="clientFirstname" required <?php echo "value='" . $_SESSION["clientData"]["clientFirstname"] . "'"?>></label><br>
-                <label>Last Name<input type="text" name="clientLastname" required <?php echo "value='" . $_SESSION["clientData"]["clientLastname"] . "'"?>></label><br>
-                <label>Email<input type="email" name="clientEmail" required <?php echo "value='" . $_SESSION["clientData"]["clientEmail"] . "'"?>></label><br>
-                <input type="hidden" name="clientId" value="<?php $_SESSION["clientData"]["clientId"]?>">
+                <label>First Name<input type="text" name="clientFirstname" required <?php if(isset($clientFirstname)){echo "value='" . $clientFirstname . "'";}else{echo "value='" . $_SESSION["clientData"]["clientFirstname"] . "'";} ?>></label><br>
+                <label>Last Name<input type="text" name="clientLastname" required <?php if(isset($clientLastname)){echo "value='" . $clientLastname . "'";}else{echo "value='" . $_SESSION["clientData"]["clientLastname"] . "'";} ?>></label><br>
+                <label>Email<input type="email" name="clientEmail" required <?php if(isset($clientEmail)){echo "value='" . $clientEmail . "'";}else{echo "value='" . $_SESSION["clientData"]["clientEmail"] . "'";} ?>></label><br>
+                <input type="hidden" name="clientId" <?php echo "value='" . $_SESSION["clientData"]["clientId"] . "'"?>>
                 <input type="hidden" name="action" value="processAccountUpdate">
                 <input type="submit" value="Update Account Info">
             </form>
-            <?php if(isset($message)){
-                echo $message;
+            <?php if(isset($message2)){
+                echo $message2;
             } ?>
-            <form action="" method="post">
+            <form action="../accounts/index.php" method="post">
                 <h2>Change Password</h2>
                 <span class="newPassword">8 characters long, 1+ numbers, 1+ capital letter, and 1+ special character.</span><br>
                 <label>Password<input type="password" name="clientPassword" title="Entering A Password Will Change Your Current Password" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></label><br>

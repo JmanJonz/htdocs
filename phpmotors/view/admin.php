@@ -40,6 +40,9 @@ header("Location: /phpmotors/index.php");
             ?>
         </nav>
         <main>
+            <?php if(isset($_SESSION["message"])){
+                echo "<p>" . $_SESSION['message'] . "</p>";
+            } ?>
             <h1><?php echo $_SESSION["clientData"]["clientFirstname"] . " " . $_SESSION["clientData"]["clientLastname"] . " (You Are Logged In)"; ?></h1>
             <?php
             // displaying message from controller if one exists
