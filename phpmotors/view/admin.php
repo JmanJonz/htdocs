@@ -41,13 +41,13 @@ header("Location: /phpmotors/index.php");
         </nav>
         <main>
             <?php if(isset($_SESSION["message"])){
-                echo "<p>" . $_SESSION['message'] . "</p>";
+                echo "<p class='noticeGood'>" . $_SESSION['message'] . "</p>";
             } ?>
             <h1><?php echo $_SESSION["clientData"]["clientFirstname"] . " " . $_SESSION["clientData"]["clientLastname"] . " (You Are Logged In)"; ?></h1>
             <?php
             // displaying message from controller if one exists
             if(isset($message)){
-                echo "<p>$message</p>";
+                echo "<p>$message</p>"; 
             }
             ?>
             <br>
@@ -58,13 +58,13 @@ header("Location: /phpmotors/index.php");
             </ul>
             <br>
              <h2>Account Management</h2>
-             <a href="../accounts/index.php?action=updateAccountInfo">Click Here To Update Your Account Information</a>
+             <a href="../accounts/index.php?action=updateAccountInfo" class="links">Click Here To Update Your Account Information</a>
              <br>
             <?php 
                 if($_SESSION["clientData"]["clientLevel"] > 1){
                     echo "<br>";
                     echo "<h2>Inventory Management</h2>";
-                    echo "<p><a href='/phpmotors/vehicles/'>Click Here To Update / Delete Inventory</a></p>";
+                    echo "<p><a href='/phpmotors/vehicles/' class='links, extraLinkStyle'>Click Here To Update / Delete Inventory</a></p>";
                 }
                 // if($_SESSION["clientData"]["clientLevel"] == 1){
                 // }

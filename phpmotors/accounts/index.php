@@ -120,7 +120,7 @@ switch ($action){
     case "updateAccountInfo":
         include "../view/client-update.php";
         exit;
-        break;
+        break; 
     case "processAccountUpdate":
         // Getting data submitted by account update sent here by post
         $clientId = trim(filter_input(INPUT_POST, "clientId", FILTER_SANITIZE_NUMBER_INT));
@@ -129,7 +129,7 @@ switch ($action){
         $clientEmail = trim(filter_input(INPUT_POST, "clientEmail", FILTER_SANITIZE_EMAIL));
         // making sure that no required input is left empty
         if(empty($clientFirstname) || empty($clientLastname) || empty($clientEmail)){
-            $message1 = "<p>Please provide information for all empty form fields.</p>";
+            $message1 = "<p class='notice'>Please provide information for all empty form fields.</p>";
             include "../view/client-update.php";
             exit;
         }
@@ -152,11 +152,11 @@ switch ($action){
             $_SESSION["clientData"]["clientFirstname"] = $clientData["clientFirstname"];
             $_SESSION["clientData"]["clientLastname"] = $clientData["clientLastname"];
             $_SESSION["clientData"]["clientEmail"] = $clientData["clientEmail"];
-            include "../view/admin.php";
+            header("Location: ./");
             exit;
         }else{
             $_SESSION["message"] = "Sorry Account Update Was Either Not Successful Or Nothing Was Changed";
-            include "../view/admin.php";
+            header("Location: ./");
             exit;
         }
         break;
@@ -166,7 +166,7 @@ switch ($action){
         $clientPassword = trim(filter_input(INPUT_POST, "clientPassword", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
         // make sure required fields arent empty
         if(empty($clientPassword)){
-            $message2 = "<p>Please provide information for all empty form fields.</p>";
+            $message2 = "<p class='notice'>Please provide information for all empty form fields.</p>";
             include "../view/client-update.php";
             exit;
         }
@@ -189,7 +189,7 @@ switch ($action){
                 exit;
             }
         }else{
-            $message2 = "<p>Error, Please make sure that the password meets the requirements.</p>";
+            $message2 = "<p class='notice'>Error, Please make sure that the password meets the requirements.</p>";
             include "../view/client-update.php";
             exit;
         }
