@@ -94,7 +94,7 @@ switch($action){
         // Convert the array to a JSON object and send it back
         echo json_encode($inventoryArray);
         break;
-    case "mod":
+    case "mod": 
         $invId = filter_input(INPUT_GET, 'invId', FILTER_VALIDATE_INT);
         // Getting info for single vehicle
         $invInfo = getInvItemInfo($invId);
@@ -166,6 +166,27 @@ switch($action){
                 header('location: /phpmotors/vehicles/');
                 exit;
         }   
+        break;
+    case "classification":
+        $classificationName = filter_input(INPUT_GET, "classificationName", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $vehicles = getInventoryByClassificationName($classificationName);
+        // Test and inspect returned data from database model function
+        // var_dump($vehicles);
+        // exit;
+
+        if(!count($vehicles)){
+            $message = "<p class='notice'>Sorry, no $classificationName vehicles could be found.</p>";
+        }else{
+            $vehicleDisplay = buildVehiclesDisplay($vehicles);
+        }
+        include "../view/classification.php";
+        exit;
+        break;
+    case "genVehicleDetails":
+        $invId = filter_input(INPUT_GET, "currentVehicle", FILTER_SANITIZE_NUMBER_INT);
+        $vehicleInfo = getInvItemInfo($invId);
+        include "../view/vehicle-detail.php";
+        exit;
         break;
     default:
 

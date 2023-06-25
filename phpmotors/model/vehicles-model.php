@@ -121,4 +121,19 @@ function deleteVehicle($invId){
     $stmt->closeCursor();
     return $rowsChanged; 
 }
+
+// get vehicles based on classificationName and not by classificationId
+// this is going to use the relational key from the carclassification as
+// a means to filter and select data from the inventory table that also has
+// a classificationId that correlates to a classificationName in the carclassification table...
+function getInventoryByClassificationName($classificationName){
+    $db = phpmotorsConnect();
+    $sql = 'SELECT * FROM inventory WHERE classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName)';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':classificationName', $classificationName, PDO::PARAM_STR);
+    $stmt->execute();
+    $vehicles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $vehicles;
+}
 ?>

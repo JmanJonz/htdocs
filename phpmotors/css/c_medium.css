@@ -8,7 +8,7 @@
 /* Remember only apply styles to an element and not a class if you won't those styles to apply to all the elements accross the whole site as all pages will be connected to the same stylesheets!*/
 
 /* Styles needed to alter the small foundational styles so that the website adapts to fit a medium sized screen for things like tablets and Ipads */
-@media(min-width: 600px){
+@media(min-width: 700px){
     /* ---------------- Home Page Styles --------------- */
     html{
         margin: 0px;
@@ -86,5 +86,39 @@
     /* Footer */
     footer p:nth-of-type(3){
         display: block;
+    }
+
+    /* vehicle list by classification view */
+    #inv-display {
+		flex-flow: row wrap;
+		justify-content: flex-start;
+	}
+
+	#inv-display h2{
+		font-size: 1rem;
+        border-top: #0e0d0d 3px solid;
+        padding-top: 20px;
+	}
+
+	#inv-display li {
+		max-width: 200px;
+		flex: 1 0 auto;
+		text-align: center;
+		height: 250px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+      
+	#inv-display div {
+		width: 100%;
+	}
+
+    /* vehicle-detail view */
+    .vehicleDetails{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+        column-gap: 5px;
     }
 }
