@@ -43,7 +43,7 @@
                     <p>Fuzzy Dice!</p>
                     <a class="own_today_largeview" href="">Own Today</a>
                 </div>
-                <img src="images/delorean.jpg" alt="Delorean Cartoon">
+                <img src="images/vehicles/delorean.jpg" alt="Delorean Cartoon">
                 <a class="own_today_smallview" href="">Own Today</a>
             </section>
             <div class="review_upgrades_container">

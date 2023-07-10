@@ -315,9 +315,11 @@ html{
     margin: 3px auto;
 }
 .vehicleDetails>.leftDetails>img{
-    width: 100%;
+    width: 500px;
+    max-height: 500px;
     margin-top: 12px;
     margin-bottom: 15px;
+    margin-inline: auto;
 }
 .vehicleDetails>.leftDetails>h2{
     margin-bottom: 15px;
@@ -330,6 +332,65 @@ html{
 }
 .vehicleDetails>.rightDetails>p:nth-child(even){
     background-color: #b1afaf;
+}
+.thumbnailImages{
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.thumbnailImages>img{
+    width: 150px;
+    margin-top: 8px;
+}
+
+/* image-admin view */
+.image-admin *{
+    display: block;
+}
+.image-admin>h1, .image-admin>h2{
+    margin-block: 15px;
+    margin-inline: 12px;
+}
+
+.image-admin input, .image-admin select{
+    margin-bottom: 12px;
+}
+
+.image-admin label{
+    margin-bottom: 8px;
+}
+.pImage{
+    display: inline-block;
+}
+.imgUpBTN{
+    font-size: 20px;
+    background-color: #3671a5;
+    font-weight: bolder;
+}
+.image-admin label{
+    font-size: 20px;
+}
+#image-display{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #c7d4df;
+    padding: 10px;    
+}
+#image-display img{
+    width: 250px;    
+}
+#image-display a{
+    color: #050505;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.notice{
+    font-weight: bolder !important;
+    font-size: 20px !important;
 }
 
    

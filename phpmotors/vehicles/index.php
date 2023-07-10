@@ -10,7 +10,7 @@ require_once "../model/main-model.php";
 require_once "../model/vehicles-model.php";
 require_once "../library/functions.php";
 
-getClassifications();
+getClassifications(); 
 // Dynamically build nav with classifications from DB
 $navList = loadNav(getClassifications());
 
@@ -171,8 +171,8 @@ switch($action){
         $classificationName = filter_input(INPUT_GET, "classificationName", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $vehicles = getInventoryByClassificationName($classificationName);
         // Test and inspect returned data from database model function
-        // var_dump($vehicles);
-        // exit;
+        // print_r($vehicles);
+        // exit; 
 
         if(!count($vehicles)){
             $message = "<p class='notice'>Sorry, no $classificationName vehicles could be found.</p>";
@@ -185,6 +185,9 @@ switch($action){
     case "genVehicleDetails":
         $invId = filter_input(INPUT_GET, "currentVehicle", FILTER_SANITIZE_NUMBER_INT);
         $vehicleInfo = getInvItemInfo($invId);
+        $extraVehicleImages = getVehiclesThumbnails($invId);
+        // print_r($extraVehicleImages);
+        $thumbnails = buildThumbnailDisplay($extraVehicleImages);
         include "../view/vehicle-detail.php";
         exit;
         break;
