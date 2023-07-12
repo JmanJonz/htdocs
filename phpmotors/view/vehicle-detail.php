@@ -37,8 +37,8 @@
         </nav>
         <main>
             <h1 class="h1VehicleDetail"><?php echo "$vehicleInfo[invMake] $vehicleInfo[invModel]"; ?></h1>
-            <?php if(isset($message)){
-                echo $message;
+            <?php if(isset($_SESSION["message"])){
+                echo $_SESSION["message"];
             }
             ?>
             <?Php echo "<div class='parentFlexbox'>"; ?>
@@ -49,6 +49,33 @@
             echo $thumbnails;
             echo "</div>" ?>
             <?php echo "</div>"?>
+            <hr>
+            <h2>Customer Reviews</h2>
+            <?php 
+            $reviewName = $vehicleInfo["invMake"] . " " . $vehicleInfo["invModel"];
+            echo "<h3 class='reviewName'>Review the $reviewName";
+            if(isset($_SESSION["message2"])){
+                echo $_SESSION["message2"];
+            }
+            ?>
+            <?php
+                if(isset($_SESSION["loggedin"])){
+                    if($_SESSION["loggedin"]){
+                        $screenName = genScreenName($_SESSION["clientData"]["clientFirstname"], $_SESSION["clientData"]["clientLastname"]);
+                        $clientId = $_SESSION["clientData"]["clientId"];
+                        echo "<form action='../reviews/' method='post'>
+                                <label>Screen Name:<br><input type='text' name='screenName' value='$screenName' placeholder='$screenName' readonly></label><br>
+                                <label>Review:<br><textarea name='review' rows='10' cols='40' required minlength='10'></textarea><label><br>
+                                <input type='hidden' name='invId' value='$vehicleInfo[invId]'>
+                                <input type='hidden' name='clientId' value='$clientId'>
+                                <input type='hidden' name='action' value='addReview'>
+                                <input type='submit' name='submit' value='Add Review'>
+                            </form>";
+                    }
+                }else{
+                    echo "<p>You must <a href='/phpmotors/accounts/index.php?action=login'>login</a> to write a review.</p>";
+                }
+            ?>
         </main>
         <footer>
             <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/footer.php"; ?>

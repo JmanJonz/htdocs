@@ -65,6 +65,7 @@ function buildVehicleDetailsPage($vehicleInfo){
     $vehicleDetailsHTML .= "<div class='leftDetails'>";
     // Get image from image table and new query not from inventory table
     $vehicleDetailsHTML .= "<img src='$vehicleInfo[imgPath]' alt='Image of $vehicleInfo[invModel]'>";
+    $vehicleDetailsHTML .= "<p class='reviewGuidance'>Reviews for this vehicle can be found at the bottom of the page.";
     $priceMoneyFormat = number_format($vehicleInfo['invPrice'], 0, ".", ",");
     $vehicleDetailsHTML .= "<h2>Price: $$priceMoneyFormat</h2>";
     $vehicleDetailsHTML .= "</div>";
@@ -276,5 +277,18 @@ function buildThumbnailDisplay($thumbnails){
     }
     $tn .= "</div>";
     return $tn;
+}
+
+// create screen reader name using first and last name
+function genScreenName($firstName, $lastName){
+    $subSTR1 = substr($firstName, 0, 1);
+    $screenName = $subSTR1.$lastName;
+    return $screenName;
+}
+// Generate Footer
+function genFooter(){
+    echo "<p>© PHP Motors, All rights reserved.</p>
+    <p>All images used are believed to be in 'Fair Use'. Please notify the author if any are not and they will be removed.</p>
+    <p>Last Updated: <span>25 April, 2018</span></p>";
 }
 ?>

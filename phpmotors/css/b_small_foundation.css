@@ -310,6 +310,10 @@ html{
     margin-top: 10px;
     text-decoration: underline;
 }
+.reviewGuidance{
+    text-align: center;
+    margin-block: 6px;
+}
 .vehicleDetails{
     width: 96vw;
     margin: 3px auto;
