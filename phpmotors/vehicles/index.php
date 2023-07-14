@@ -8,6 +8,8 @@ session_start();
 require_once "../library/connections.php";
 require_once "../model/main-model.php";
 require_once "../model/vehicles-model.php";
+require_once "../model/reviews-model.php";
+require_once "../model/accounts-model.php";
 require_once "../library/functions.php";
 
 getClassifications(); 
@@ -188,6 +190,8 @@ switch($action){
         $extraVehicleImages = getVehiclesThumbnails($invId);
         // print_r($extraVehicleImages);
         $thumbnails = buildThumbnailDisplay($extraVehicleImages);
+        // Get current reviews for this vehicle so that they can be used in the view when included.
+        $currentReviewsById = getReviewsByInvId($invId);
         include "../view/vehicle-detail.php";
         exit;
         break;

@@ -50,10 +50,10 @@
             echo "</div>" ?>
             <?php echo "</div>"?>
             <hr>
-            <h2>Customer Reviews</h2>
+            <h2 class="reviewsHeader">Customer Reviews</h2>
             <?php 
             $reviewName = $vehicleInfo["invMake"] . " " . $vehicleInfo["invModel"];
-            echo "<h3 class='reviewName'>Review the $reviewName";
+            echo "<h3 class='reviewName' id='reviewNamee'>Review the $reviewName</h3>";
             if(isset($_SESSION["message2"])){
                 echo $_SESSION["message2"];
             }
@@ -63,18 +63,32 @@
                     if($_SESSION["loggedin"]){
                         $screenName = genScreenName($_SESSION["clientData"]["clientFirstname"], $_SESSION["clientData"]["clientLastname"]);
                         $clientId = $_SESSION["clientData"]["clientId"];
-                        echo "<form action='../reviews/' method='post'>
+                        echo "<div class='forBorder'><form action='../reviews/' method='post'>
                                 <label>Screen Name:<br><input type='text' name='screenName' value='$screenName' placeholder='$screenName' readonly></label><br>
-                                <label>Review:<br><textarea name='review' rows='10' cols='40' required minlength='10'></textarea><label><br>
+                                <label>Review:<br><textarea name='review' rows='10' cols='40' required minlength='10'></textarea></label><br>
                                 <input type='hidden' name='invId' value='$vehicleInfo[invId]'>
                                 <input type='hidden' name='clientId' value='$clientId'>
                                 <input type='hidden' name='action' value='addReview'>
-                                <input type='submit' name='submit' value='Add Review'>
-                            </form>";
+                                <input type='submit' name='submit' value='Add Review' class='revBtn'>
+                            </form></div>";
                     }
                 }else{
-                    echo "<p>You must <a href='/phpmotors/accounts/index.php?action=login'>login</a> to write a review.</p>";
+                    echo "<p class='loginDirective'>You must <a href='/phpmotors/accounts/index.php?action=login'>login</a> to write a review.</p>";
+                } 
+                $reviewList = "<div class='reviewList'>";
+                foreach($currentReviewsById as $review){
+                    $reviewList .= "<div class='review'>";
+                    $reviewerClientData = getClientById($review["clientId"]);
+                    $reviewScreenName = genScreenName($reviewerClientData["clientFirstname"], $reviewerClientData["clientLastname"]);
+                    $formattedDate = strftime('%B %d, %Y', strtotime($review["reviewDate"]));
+                    $reviewList .= "<h4>-$reviewScreenName wrote on: $formattedDate </h4>";
+                    $reviewList .= "<p>$review[reviewText]</p>";
+                    $reviewList .= "</div>";
                 }
+                $reviewList .= "</div>";
+                echo $reviewList;
+                // Clear out message
+                unset($_SESSION["message2"]);
             ?>
         </main>
         <footer>

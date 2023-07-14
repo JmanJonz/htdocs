@@ -9,6 +9,7 @@ require_once "../library/connections.php";
 require_once "../model/main-model.php";
 // adding in the accounts model
 require_once "../model/accounts-model.php";
+require_once "../model/reviews-model.php";
 // Adding in functions.php to use custom functions
 require_once "../library/functions.php";
 

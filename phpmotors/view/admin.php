@@ -37,7 +37,7 @@ header("Location: /phpmotors/index.php");
             <!-- <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/phpmotors/snippets/nav.php"; ?> -->
             <?php 
             echo $navList; 
-            ?>
+            ?> 
         </nav>
         <main>
             <?php if(isset($_SESSION["message"])){
@@ -68,6 +68,17 @@ header("Location: /phpmotors/index.php");
                 }
                 // if($_SESSION["clientData"]["clientLevel"] == 1){
                 // }
+             ?>
+             <h2 class="headerReviewMan">Manage Your Product Reviews</h2>
+             <?php
+             // grab reviews by clientId for management to be used in the included view.
+             $clientReviews = getReviewsByClientId($_SESSION["clientData"]["clientId"]);
+             $clientReviewList = "<ul>";
+             foreach($clientReviews as $review){
+                $clientReviewList .= "<li>$review[reviewText]</li><br>";
+             }
+             $clientReviewList .= "</ul>";
+             echo $clientReviewList;
              ?>
         </main>
         <footer>

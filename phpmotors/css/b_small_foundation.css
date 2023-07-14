@@ -348,6 +348,61 @@ html{
     width: 150px;
     margin-top: 8px;
 }
+.reviewsHeader{
+    margin-bottom: 8px;
+}
+#reviewNamee{
+    font-size: 18px;
+    margin-bottom: 10px !important;
+}
+label{
+    font-size: 15px;
+}
+.loginDirective{
+    margin-bottom: 8px !important;
+    text-decoration: underline;
+    font-weight: bolder;
+    font-size: 18px;
+}
+.reviewList{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #4c96d7;
+    row-gap: 8px;
+    margin-top: 13px;
+}
+.review{
+    margin-block: 2px;
+    margin-inline: 3px;
+}
+.review>h4{
+    font-size: 20px;
+    margin: 3px;
+}
+.review>p{
+    background-color: white;
+    text-align: center;
+    padding: 8px !important;
+}
+.revBtn{
+    padding: 6px;
+    background-color: #3a3a3a;
+    font-weight: bold;
+    font-size: large;
+    margin-top: 4px;
+    color: white;
+    cursor: pointer;
+}
+textarea{
+    width: 65vw;
+    font-size: 20px;
+    display: inline;
+}
+.forBorder{
+    border: #050505 solid 3px;
+    padding: 4px;
+}
 
 /* image-admin view */
 .image-admin *{
