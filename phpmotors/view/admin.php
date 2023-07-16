@@ -69,16 +69,16 @@ header("Location: /phpmotors/index.php");
                 // if($_SESSION["clientData"]["clientLevel"] == 1){
                 // }
              ?>
-             <h2 class="headerReviewMan">Manage Your Product Reviews</h2>
+             <h2 class="headerReviewMan">Manage Your Vehicle Reviews</h2>
              <?php
-             // grab reviews by clientId for management to be used in the included view.
-             $clientReviews = getReviewsByClientId($_SESSION["clientData"]["clientId"]);
-             $clientReviewList = "<ul>";
-             foreach($clientReviews as $review){
-                $clientReviewList .= "<li>$review[reviewText]</li><br>";
+             if(isset($_SESSION["message8"])){
+                echo "<p class='noticeGood'>$_SESSION[message8]</p>";
              }
-             $clientReviewList .= "</ul>";
-             echo $clientReviewList;
+             unset($_SESSION["message8"]);
+             // Display client reviews at the botton of the admin page to be updated or deleted. It was build in the accounts controller
+             if(isset($clientReviewList)){
+                echo $clientReviewList;
+             }
              ?>
         </main>
         <footer>

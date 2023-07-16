@@ -278,6 +278,23 @@ form:nth-of-type(2)>h2{
     color: blue;
     margin: 5px;
 }
+.headerReviewMan{
+    margin-block: 8px;
+    margin-top: 18px;
+}
+.reviewUpdateLink, .reviewDeleteLink{
+    border: #113b5f solid 3px;
+    color: #113b5f;
+    margin: 4px;
+    padding: 2px;
+    margin-bottom: 12px !important;
+}
+.userReview{
+    margin-block: 10px;
+    font-size: 20px;
+    margin-top: 18px;
+    margin-bottom: 12px;
+}
 
 /* Vehicle List Page */
 html{

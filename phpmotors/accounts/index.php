@@ -10,6 +10,7 @@ require_once "../model/main-model.php";
 // adding in the accounts model
 require_once "../model/accounts-model.php";
 require_once "../model/reviews-model.php";
+require_once "../model/vehicles-model.php";
 // Adding in functions.php to use custom functions
 require_once "../library/functions.php";
 
@@ -24,6 +25,20 @@ $action = filter_input(INPUT_POST, "action", FILTER_SANITIZE_FULL_SPECIAL_CHARS)
 if ($action == NULL){
     $action = filter_input(INPUT_GET, "action", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 }
+
+// Creating things I want access to reguardless of the view
+    // if user is logged in... I want access to this in the admin view anypoint used during the controller
+            // grab reviews by clientId for management to be used in the included view and on any screen even login so I add it outside of the switch statement.
+            if(isset($_SESSION["loggedin"])){
+                $clientReviews = getReviewsByClientId($_SESSION["clientData"]["clientId"]);
+                $clientReviewList = "<ul>";
+                foreach($clientReviews as $review){
+                    $reviewVehicleInfo = getInvItemInfo($review["invId"]);
+                    $formattedDate = strftime('%B %d, %Y', strtotime($review["reviewDate"]));
+                    $clientReviewList .= "<li class='userReview'>$reviewVehicleInfo[invMake] $reviewVehicleInfo[invModel] (Reviewed On $formattedDate)</li><a class='reviewUpdateLink' href='../reviews/index.php?action=renderUpdateReview&reviewId=$review[reviewId]'>Update </a><a class='reviewDeleteLink' href='../reviews/index.php?action=renderConfirmDeleteView&reviewId=$review[reviewId]'>Delete</a>";
+                }
+                $clientReviewList .= "</ul>";
+            }
 
 switch ($action){
     case "login":
@@ -62,6 +77,18 @@ switch ($action){
         // Store the array into the session
         $_SESSION["clientData"] = $clientData;
         // Send them to the admin view
+            // if user is logged in... I want access to this in the admin view anypoint used during the controller
+            // grab reviews by clientId for management to be used in the included view and on any screen even login so I add it outside of the switch statement.
+            if(isset($_SESSION["loggedin"])){
+                $clientReviews = getReviewsByClientId($_SESSION["clientData"]["clientId"]);
+                $clientReviewList = "<ul>";
+                foreach($clientReviews as $review){
+                    $reviewVehicleInfo = getInvItemInfo($review["invId"]);
+                    $formattedDate = strftime('%B %d, %Y', strtotime($review["reviewDate"]));
+                    $clientReviewList .= "<li class='userReview'>$reviewVehicleInfo[invMake] $reviewVehicleInfo[invModel] (Reviewed On $formattedDate)</li><a class='reviewUpdateLink' href='../reviews/index.php?action=renderUpdateReview&reviewId=$review[reviewId]'>Update </a><a class='reviewDeleteLink' href='../reviews/index.php?action=renderConfirmDeleteView&reviewId=$review[reviewId]'>Delete</a>";
+                }
+                $clientReviewList .= "</ul>";
+            }
         include "../view/admin.php";
         exit;
         break;

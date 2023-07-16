@@ -7,6 +7,7 @@ session_start();
 require_once "../library/connections.php";
 require_once "../model/main-model.php";
 require_once "../model/vehicles-model.php";
+require_once "../model/accounts-model.php";
 require_once "../model/reviews-model.php";
 require_once "../library/functions.php";
 
@@ -42,11 +43,34 @@ switch($action){
         }
         break;
     case "renderUpdateReview":
+        // Get data needed for the view
+        $reviewId = trim(filter_input(INPUT_GET, "reviewId", FILTER_SANITIZE_NUMBER_INT));
+        $reviewData = getReviewByreviewId($reviewId);
+        $reviewedVehicleData = getInvItemInfo($reviewData[0]["invId"]);
+        include "../view/review-Update.php";
         exit;
         break;
     case "handleReviewUpdate":
+        $reviewId = trim(filter_input(INPUT_POST, "reviewId", FILTER_SANITIZE_NUMBER_INT));
+        $reviewText = trim(filter_input(INPUT_POST, "reviewText", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+        // Make sure not empty
+        if(empty($reviewText) || $reviewText == "" || $reviewText == " "){
+            $_SESSION["message8"] = "Review cannot be empty or non-altered try again!";
+            header("Location: " . "../reviews/index.php?action=renderUpdateReview&reviewId=$reviewId");
+            exit;
+        }
+
+        updateReviewById($reviewId, $reviewText);
+        $_SESSION["message8"] = "Congrats your review has been updated";
+        header("Location: " . "../accounts/");
+        
         break;
     case "renderConfirmDeleteView":
+        // Get data needed for the view
+        $reviewId = trim(filter_input(INPUT_GET, "reviewId", FILTER_SANITIZE_NUMBER_INT));
+        $reviewData = getReviewByreviewId($reviewId);
+        $reviewedVehicleData = getInvItemInfo($reviewData[0]["invId"]);        
+        include "../view/review-delete.php";
         exit;
         break;
     case "handleReviewDelete":

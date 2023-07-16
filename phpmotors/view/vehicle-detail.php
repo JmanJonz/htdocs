@@ -72,20 +72,10 @@
                                 <input type='submit' name='submit' value='Add Review' class='revBtn'>
                             </form></div>";
                     }
-                }else{
+                }else{ 
                     echo "<p class='loginDirective'>You must <a href='/phpmotors/accounts/index.php?action=login'>login</a> to write a review.</p>";
                 } 
-                $reviewList = "<div class='reviewList'>";
-                foreach($currentReviewsById as $review){
-                    $reviewList .= "<div class='review'>";
-                    $reviewerClientData = getClientById($review["clientId"]);
-                    $reviewScreenName = genScreenName($reviewerClientData["clientFirstname"], $reviewerClientData["clientLastname"]);
-                    $formattedDate = strftime('%B %d, %Y', strtotime($review["reviewDate"]));
-                    $reviewList .= "<h4>-$reviewScreenName wrote on: $formattedDate </h4>";
-                    $reviewList .= "<p>$review[reviewText]</p>";
-                    $reviewList .= "</div>";
-                }
-                $reviewList .= "</div>";
+                // Add reviews per vehicle html built in the vehicle controller:
                 echo $reviewList;
                 // Clear out message
                 unset($_SESSION["message2"]);

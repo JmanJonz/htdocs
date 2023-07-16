@@ -192,6 +192,19 @@ switch($action){
         $thumbnails = buildThumbnailDisplay($extraVehicleImages);
         // Get current reviews for this vehicle so that they can be used in the view when included.
         $currentReviewsById = getReviewsByInvId($invId);
+        // Build html of reviewlist to be used in the VD view
+        $reviewList = "<div class='reviewList'>";
+                foreach($currentReviewsById as $review){
+                    // Get client data by Id to be used in the vehicle detail view.
+                    $reviewerClientData = getClientById($review["clientId"]);
+                    $reviewList .= "<div class='review'>";
+                    $reviewScreenName = genScreenName($reviewerClientData["clientFirstname"], $reviewerClientData["clientLastname"]);
+                    $formattedDate = strftime('%B %d, %Y', strtotime($review["reviewDate"]));
+                    $reviewList .= "<h4>-$reviewScreenName wrote on: $formattedDate </h4>";
+                    $reviewList .= "<p>$review[reviewText]</p>";
+                    $reviewList .= "</div>";
+                }
+                $reviewList .= "</div>";
         include "../view/vehicle-detail.php";
         exit;
         break;

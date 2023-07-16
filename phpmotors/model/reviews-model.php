@@ -37,4 +37,29 @@ function getReviewsByClientId($clientId){
     $PDOPrepObj->closeCursor();
     return $reviews;
 }
+
+// Grab review based on the invId number
+function getReviewByreviewId($reviewId){
+    $PDO = phpmotorsConnect();
+    $sql = "SELECT * FROM reviews WHERE reviewId = :reviewId";
+    $PDOPrepObj = $PDO->prepare($sql);
+    $PDOPrepObj->bindValue(":reviewId", $reviewId, PDO::PARAM_INT);
+    $PDOPrepObj->execute();
+    $review = $PDOPrepObj->fetchAll(PDO::FETCH_ASSOC);
+    $PDOPrepObj->closeCursor();
+    return $review;
+}
+
+// update review by id
+function updateReviewById($reviewId, $reviewText){
+    $PDO = phpmotorsConnect();
+    $sql = "UPDATE reviews SET reviewText = :reviewText WHERE reviewId = :reviewId";
+    $PDOPrepObj = $PDO->prepare($sql);
+    $PDOPrepObj->bindValue(":reviewId", $reviewId, PDO::PARAM_INT);
+    $PDOPrepObj->bindValue(":reviewText",$reviewText, PDO::PARAM_STR);
+    $PDOPrepObj->execute();
+    $rowChanged = $PDOPrepObj->rowCount();
+    $PDOPrepObj->closeCursor();
+    return $rowChanged;
+}
 ?>
