@@ -62,4 +62,16 @@ function updateReviewById($reviewId, $reviewText){
     $PDOPrepObj->closeCursor();
     return $rowChanged;
 }
+
+// delete review by id
+function deleteReviewById($reviewId){
+    $PDO = phpmotorsConnect();
+    $sql = "DELETE FROM reviews WHERE reviewId = :reviewId";
+    $PDOPrepObj = $PDO->prepare($sql);
+    $PDOPrepObj->bindValue(":reviewId", $reviewId, PDO::PARAM_INT);
+    $PDOPrepObj->execute();
+    $rowChanged = $PDOPrepObj->rowCount();
+    $PDOPrepObj->closeCursor();
+    return $rowChanged;
+}
 ?>

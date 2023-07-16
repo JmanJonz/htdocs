@@ -468,5 +468,29 @@ textarea{
     font-weight: bolder !important;
     font-size: 20px !important;
 }
+/* review update and delete views */
+.a{
+    font-size: 20px;
+    margin-block: 7px;
+}
+.b{
+    border: #050505 2px solid;
+    padding: 6px;
+}
+.c{
+
+}
+.d{
+    width: 75vw;
+}
+.e{
+    background-color: #113b5f;
+    color: white;
+    font-size: 25px;
+    padding: 4px;
+}
+.z{
+    color: red;
+}
 
    

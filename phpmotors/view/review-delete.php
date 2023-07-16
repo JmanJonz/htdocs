@@ -39,15 +39,19 @@
         <?php
             echo"<h1>$reviewedVehicleData[invMake] $reviewedVehicleData[invModel] Review</h1>";
             $formattedDate = strftime('%B %d, %Y', strtotime($reviewData[0]["reviewDate"]));
-            echo "<h2>Reviewed On $formattedDate</h2>";
+            echo "<h2 class='a'>Reviewed On $formattedDate</h2>";
+            if(isset($_SESSION["message8"])){
+                echo "<p class='notice'>$_SESSION[message8]</p>";
+            }
+            unset($_SESSION["message8"]);
             $reviewText = $reviewData[0]["reviewText"];
             $reviewId = $reviewData[0]["reviewId"];
-            echo "<form action='../reviews/' method='post'>
-            <label>Review Text<br><textarea type='text' name='reviewText' cols='50' rows='10' required minlength='10' readonly>$reviewText</textarea></label><br>
-            <p>Think twice before you delete the review as it cannot be undone</p><br>
+            echo "<form class='b' action='../reviews/' method='post'>
+            <label class='c'>Review Text<br><textarea class='d' name='reviewText' cols='50' rows='10' required minlength='10' readonly>$reviewText</textarea></label><br>
+            <p class='z'>Think twice before you delete the review as it cannot be undone</p><br>
             <input type='hidden' name='reviewId' value='$reviewId'>
             <input type='hidden' name='action' value='handleReviewDelete'>
-            <input type='submit' name='submit' value='Delete Review'>
+            <input class='e' type='submit' name='submit' value='Delete Review'>
             </form>"       
          ?>
         </main>

@@ -31,13 +31,13 @@ if ($action == NULL){
             // grab reviews by clientId for management to be used in the included view and on any screen even login so I add it outside of the switch statement.
             if(isset($_SESSION["loggedin"])){
                 $clientReviews = getReviewsByClientId($_SESSION["clientData"]["clientId"]);
-                $clientReviewList = "<ul>";
+                $clientReviewList = "<div>";
                 foreach($clientReviews as $review){
                     $reviewVehicleInfo = getInvItemInfo($review["invId"]);
                     $formattedDate = strftime('%B %d, %Y', strtotime($review["reviewDate"]));
-                    $clientReviewList .= "<li class='userReview'>$reviewVehicleInfo[invMake] $reviewVehicleInfo[invModel] (Reviewed On $formattedDate)</li><a class='reviewUpdateLink' href='../reviews/index.php?action=renderUpdateReview&reviewId=$review[reviewId]'>Update </a><a class='reviewDeleteLink' href='../reviews/index.php?action=renderConfirmDeleteView&reviewId=$review[reviewId]'>Delete</a>";
+                    $clientReviewList .= "<div class='userReview'>$reviewVehicleInfo[invMake] $reviewVehicleInfo[invModel] (Reviewed On $formattedDate)</div><a class='reviewUpdateLink' href='../reviews/index.php?action=renderUpdateReview&reviewId=$review[reviewId]'>Update </a><a class='reviewDeleteLink' href='../reviews/index.php?action=renderConfirmDeleteView&reviewId=$review[reviewId]'>Delete</a>";
                 }
-                $clientReviewList .= "</ul>";
+                $clientReviewList .= "</div>";
             }
 
 switch ($action){
@@ -81,13 +81,13 @@ switch ($action){
             // grab reviews by clientId for management to be used in the included view and on any screen even login so I add it outside of the switch statement.
             if(isset($_SESSION["loggedin"])){
                 $clientReviews = getReviewsByClientId($_SESSION["clientData"]["clientId"]);
-                $clientReviewList = "<ul>";
+                $clientReviewList = "<div>";
                 foreach($clientReviews as $review){
                     $reviewVehicleInfo = getInvItemInfo($review["invId"]);
                     $formattedDate = strftime('%B %d, %Y', strtotime($review["reviewDate"]));
-                    $clientReviewList .= "<li class='userReview'>$reviewVehicleInfo[invMake] $reviewVehicleInfo[invModel] (Reviewed On $formattedDate)</li><a class='reviewUpdateLink' href='../reviews/index.php?action=renderUpdateReview&reviewId=$review[reviewId]'>Update </a><a class='reviewDeleteLink' href='../reviews/index.php?action=renderConfirmDeleteView&reviewId=$review[reviewId]'>Delete</a>";
+                    $clientReviewList .= "<div class='userReview'>$reviewVehicleInfo[invMake] $reviewVehicleInfo[invModel] (Reviewed On $formattedDate)</div><a class='reviewUpdateLink' href='../reviews/index.php?action=renderUpdateReview&reviewId=$review[reviewId]'>Update </a><a class='reviewDeleteLink' href='../reviews/index.php?action=renderConfirmDeleteView&reviewId=$review[reviewId]'>Delete</a>";
                 }
-                $clientReviewList .= "</ul>";
+                $clientReviewList .= "</div>";
             }
         include "../view/admin.php";
         exit;

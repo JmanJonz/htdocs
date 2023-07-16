@@ -55,7 +55,7 @@ switch($action){
         $reviewText = trim(filter_input(INPUT_POST, "reviewText", FILTER_SANITIZE_FULL_SPECIAL_CHARS));
         // Make sure not empty
         if(empty($reviewText) || $reviewText == "" || $reviewText == " "){
-            $_SESSION["message8"] = "Review cannot be empty or non-altered try again!";
+            $_SESSION["message8"] = "Review cannot be empty try again!";
             header("Location: " . "../reviews/index.php?action=renderUpdateReview&reviewId=$reviewId");
             exit;
         }
@@ -74,6 +74,10 @@ switch($action){
         exit;
         break;
     case "handleReviewDelete":
+        $reviewId = trim(filter_input(INPUT_POST, "reviewId", FILTER_SANITIZE_NUMBER_INT));
+        deleteReviewById($reviewId);
+        $_SESSION["message8"] = "Your review has been permanently deleted.";
+        header("Location: " . "../accounts/");
         break;
     default:
         if(isset($_SESSION["loggedin"])){
